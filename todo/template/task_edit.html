@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <form class="needs-validation" method="POST" >
+            {% csrf_token %}
+
+
+            <div class="col-md-3 mb-3">
+                    <label>Title <span class="red-color"> * </span></label>
+<!--                                                <input type="text" class="form-control" id="eventtitle" placeholder="Event Title" name="eventtitle" required />-->
+                        {{ form.title  }}
+
+
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label>Description <span class="red-color"> * </span></label>
+<!--                                                <input type="text" class="form-control" id="eventtitle" placeholder="Event Title" name="eventtitle" required />-->
+                        {{ form.description  }}
+
+
+                </div>
+
+            <div class="col-md-12">
+                <div class="mybtn-holder">
+                    <button class="mybtn" data-toggle="collapse" data-target="#demo">Cancel</button>
+                    <button class="mybtn" type="submit">update</button>
+
+
+
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}
