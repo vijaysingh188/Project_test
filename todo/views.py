@@ -59,6 +59,7 @@ def task_delete(request, module_id):
 
 
 def task_status_change(request):
+    print("skjbvkfsjv")
     status = request.GET
     some_list = ToDo.objects.filter(title=status['id']).values_list('active')
     res = [lis[0] for lis in some_list]
