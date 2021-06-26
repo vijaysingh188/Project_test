@@ -10,3 +10,12 @@ class ToDo(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class UploadDocuments(models.Model):
+    uploadfiles = models.FileField(null=True,blank=True,upload_to='media')
+    created_at = models.DateField(auto_now=True)
+    filename = models.CharField(null=True,blank=True,max_length=50)
+
+    def __str__(self):
+        return self.filename

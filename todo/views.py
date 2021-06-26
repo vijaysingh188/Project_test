@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import ToDo
+from .models import ToDo,UploadDocuments
 from .forms import ToDoForm
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
@@ -69,3 +69,21 @@ def task_status_change(request):
     elif res[0] == False:
         some_list = ToDo.objects.filter(title=status['id']).update(active=True)
     return HttpResponse()
+
+
+def uploaddocuments(request):
+    print("cfvbkfvf")
+    get_all_objects = list(UploadDocuments.objects.values("uploadfiles","filename","created_at"))
+    print(get_all_objects,'******************get_all_objects')
+    if request.method == "POST":
+         print("post")
+         myfile = request.FILES['myfile']
+         filename = request.POST.get("filename")
+         print(myfile,filename)
+         object_creation = UploadDocuments.objects.create(uploadfiles=myfile,filename=filename)
+         print("successfully")
+    context={
+        "get_all_objects":get_all_objects
+    }
+    return render(request,'upload_documents.html',context)
+
